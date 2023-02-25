@@ -1,5 +1,4 @@
-using Microsoft.Extensions.DependcyInjection;
-using WebApi.DBOperations;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+services.AddDbContext<BookStoreDbContext>(options => options.UseInMemoryDatabase(databaseName: "BookStoreDB"));
 
 app.UseHttpsRedirection();
 
